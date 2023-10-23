@@ -27,7 +27,7 @@ st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Packa
 # Tambahkan dataframe Pandas ke dashboard
 uploaded_files = st.file_uploader("Choose a CSV file")
 for uploaded_file in uploaded_files:
-    bytes_data = uploaded_file.read()
+    df = uploaded_file.read()
 df = pd.read_csv('Air_quality_guanyuan_2013_2017.csv', delimiter=',')
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
