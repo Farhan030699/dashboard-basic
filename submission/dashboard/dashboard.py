@@ -25,7 +25,7 @@ st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Package.")
 
 # Tambahkan dataframe Pandas ke dashboard
-df = pd.read_csv(/'Air_quality-guanyuan_2013-2017.csv', delimiter=',')
+df = pd.read_csv('Air_quality-guanyuan_2013-2017.csv', delimiter=',')
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
 df1=df.sort_values(['tanggal'])
