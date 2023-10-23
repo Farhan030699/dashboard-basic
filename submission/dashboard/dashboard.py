@@ -13,7 +13,7 @@ import matplotlib.dates as mdates
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
-import io
+import requests
 sns.set(style='dark')
 
 
@@ -26,8 +26,19 @@ st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Package.")
 
 # Tambahkan dataframe Pandas ke dashboard
-uploaded = files.upload()
-df = pd.read_csv("Air_quality-guanyuan_2013-2017.csv")    
+# URL ke file data di repositori GitHub
+github_url = "https://github.com/Farhan030699/dashboard-basic/blob/main/submission/dashboard/Air_quality_guanyuan_2013_2017.csv"
+
+# Fungsi untuk mengambil data dari URL
+@st.cache
+def load_data(url):
+    response = requests.get(url)
+    data = response.text
+    return data
+
+# Membaca data dari URL ke dalam DataFrame
+data = load_data(github_url)
+df = pd.read_csv(data)   
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
 df1=df.sort_values(['tanggal'])
