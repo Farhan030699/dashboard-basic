@@ -17,7 +17,7 @@ sns.set(style='dark')
 
 
 # Judul aplikasi
-st.set_page_config(page_title="Dashboard Air Quality in Guanyuan", page_icon=":bar_chart:")
+st.set_page_config(page_title="Dashboard Air Quality in Guanyuan.csv", page_icon=":bar_chart:")
 st.title('DASHBOARD BASIC EDGE')
 st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 
