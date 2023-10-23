@@ -25,9 +25,23 @@ st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Package.")
 
 # Tambahkan dataframe Pandas ke dashboard
-uploaded_files = st.file_uploader("Choose a CSV file")
-for uploaded_file in uploaded_files:
-    df = uploaded_file.read()
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # To read file as bytes:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
+
+    # To convert to a string based IO:
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    st.write(stringio)
+
+    # To read file as string:
+    string_data = stringio.read()
+    st.write(string_data)
+
+    # Can be used wherever a "file-like" object is accepted:
+    df = pd.read_csv(uploaded_file)
+    
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
 df1=df.sort_values(['tanggal'])
