@@ -13,7 +13,7 @@ import matplotlib.dates as mdates
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
-from io import StringIO
+import io
 sns.set(style='dark')
 
 
@@ -26,7 +26,7 @@ st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Package.")
 
 # Tambahkan dataframe Pandas ke dashboard
-
+uploaded = files.upload()
 df = pd.read_csv("Air_quality-guanyuan_2013-2017.csv")    
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
