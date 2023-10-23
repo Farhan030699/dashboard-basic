@@ -28,7 +28,6 @@ st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Packa
 uploaded_files = st.file_uploader("Choose a CSV file")
 for uploaded_file in uploaded_files:
     df = uploaded_file.read()
-df = pd.read_csv('Air_quality-guanyuan_2013-2017.csv', delimiter=',')
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
 df1=df.sort_values(['tanggal'])
