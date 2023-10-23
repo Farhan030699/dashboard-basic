@@ -17,7 +17,7 @@ sns.set(style='dark')
 
 
 # Judul aplikasi
-st.set_page_config(page_title="Dashboard Air Quality in Guanyuan.csv", page_icon=":bar_chart:")
+st.set_page_config(page_title="Dashboard Air Quality in Guanyuan", page_icon=":bar_chart:")
 st.title('DASHBOARD BASIC EDGE')
 st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 
@@ -25,7 +25,7 @@ st.header('Air Quality in Guanyuan March2013 - Feb2017 :sparkles:')
 st.write("Ini adalah dashboard sederhana yang dibuat menggunakan Streamlit Package.")
 
 # Tambahkan dataframe Pandas ke dashboard
-df = pd.read_csv('Air_quality_guanyuan_2013_2017', delimiter=',')
+df = pd.read_csv('Air_quality_guanyuan_2013_2017.csv', delimiter=',')
 df.dropna(axis=0, inplace=True)
 df['tanggal']=pd.to_datetime(df[['year','month','day','hour']])
 df1=df.sort_values(['tanggal'])
